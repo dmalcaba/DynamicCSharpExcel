@@ -5,13 +5,19 @@ namespace DynamicCsharp
     /// <summary>
     /// https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interop/how-to-access-office-onterop-objects
     /// 
-    /// Additional enhancements are possible when you call a COM type that does not require a primary interop assembly (PIA) at run time. Removing the dependency on PIAs results in version independence and easier deployment. For more information about the advantages of programming without PIAs, see Walkthrough: Embedding Types from Managed Assemblies.
+    /// Additional enhancements are possible when you call a COM type that does not require 
+    /// a primary interop assembly (PIA) at run time. Removing the dependency on PIAs 
+    /// results in version independence and easier deployment. For more information about 
+    /// the advantages of programming without PIAs, see Walkthrough: Embedding Types from Managed Assemblies.
     ///
-    ///In addition, programming is easier because the types that are required and returned by COM methods can be represented by using the type dynamic instead of Object.Variables that have type dynamic are not evaluated until run time, which eliminates the need for explicit casting.For more information, see Using Type dynamic.
+    /// In addition, programming is easier because the types that are required and returned by COM methods 
+    /// can be represented by using the type dynamic instead of Object. Variables that have type dynamic 
+    /// are not evaluated until run time, which eliminates the need for explicit casting.For more information, 
+    /// see Using Type dynamic.
     ///
-    ///In C# 4, embedding type information instead of using PIAs is default behavior. Because of that default, several of the previous examples are simplified because explicit casting is not required.
+    /// In C# 4, embedding type information instead of using PIAs is default behavior. Because of that default, 
+    /// several of the previous examples are simplified because explicit casting is not required.
     /// </summary>
-
 
     public class Excel
     {
