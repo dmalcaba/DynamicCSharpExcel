@@ -8,10 +8,21 @@ namespace DynamicCSharpOutlook
     public class Outlook
     {
         private readonly OutlookOptions _options;
+        private dynamic _outlookObj;
+
+        /// <summary>
+        /// Version information, use for logging purposes in case of errors
+        /// </summary>
+        public string Version => $"{_outlookObj.Name} Version {_outlookObj.Version}";
+
 
         public Outlook(OutlookOptions options)
         {
             _options = options;
+
+            Type outlookType = Type.GetTypeFromProgID("Outlook.Application", true);
+            _outlookObj = Activator.CreateInstance(outlookType);
+
         }
 
         /// <summary>
@@ -21,13 +32,7 @@ namespace DynamicCSharpOutlook
         {
             // Create Mail item
             // https://docs.microsoft.com/en-us/office/vba/api/outlook.mailitem
-
-            Type outlookType = Type.GetTypeFromProgID("Outlook.Application", true);
-            dynamic outlookObj = Activator.CreateInstance(outlookType);
-            dynamic mailItemObj = outlookObj.CreateItem(0);
-
-            // For logging purpose
-            Debug.WriteLine($"Outlook build: {outlookObj.Version}");
+            dynamic mailItemObj = _outlookObj.CreateItem(0);
 
             // Add recipients
             dynamic recepientsObj = mailItemObj.Recipients;
