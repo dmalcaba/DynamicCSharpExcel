@@ -54,6 +54,10 @@
       <Project>{E5A2CA5F-E20E-4D09-A8C1-CBE318417090}</Project>
       <Name>DynamicCSharpExcel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DynamicCSharpOutlook\DynamicCSharpOutlook.csproj">
+      <Project>{b992a5e4-991a-487d-a84c-82f7e7931cc8}</Project>
+      <Name>DynamicCSharpOutlook</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
