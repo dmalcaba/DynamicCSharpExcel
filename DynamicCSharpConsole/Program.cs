@@ -1,6 +1,9 @@
 ﻿using DynamicCsharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using DynamicCSharpOutlook;
+using DynamicCSharpWord;
 
 namespace DynamicCSharpConsole
 {
@@ -8,8 +11,9 @@ namespace DynamicCSharpConsole
     {
         static void Main(string[] args)
         {
-            //FirstTest();
-            Run();
+            //Run();
+            //SendOutlookEmail();
+            CreateWord();
 
             Console.WriteLine("\n\nPress enter to continue...");
             Console.ReadLine();
@@ -65,6 +69,8 @@ namespace DynamicCSharpConsole
         {
             var myExcel = new Excel(new ExcelOptions {Filename = "TestExcel", Visible = true, WorksheetName = "My Work"});
 
+            Debug.WriteLine($"Version: {myExcel.Version}");
+
             var accountList = new List<AccountValues>
             {
                 new AccountValues("11100010", "Petty Cash", "001", 10.80m),
@@ -75,7 +81,7 @@ namespace DynamicCSharpConsole
             myExcel.WriteCellValue(1, 2, "Account Name");
             myExcel.WriteCellValue(1, 3, "Cost Center");
             myExcel.WriteCellValue(1, 4, "Amount");
-
+            
             myExcel.SetEntireRowStyle(1, ExcelStyle.Heading);
 
             int row = 1;
@@ -95,6 +101,34 @@ namespace DynamicCSharpConsole
 
             myExcel.SetEntireColumnStyle(4, ExcelStyle.Currency);
             myExcel.DefaultWorksheet.UsedRange.Columns.Autofit();
+        }
+
+        public static void CreateWord()
+        {
+            var wordObj = new Word();
+
+            // For logging purpose
+            Debug.WriteLine($"Information: {wordObj.Version}");
+
+        }
+
+        public static void SendOutlookEmail()
+        {
+            var options = new OutlookOptions
+            {
+                Recipients = new List<string> {"someone@github.com"},
+                Subject = "Test email using C# code",
+                Body = "<quote>This is a quote</quote>"
+            };
+
+            //options.Attachments.Add(@"C:\Users\Public\Documents\ViewResultExtension.txt");
+
+            var outlook = new Outlook(options);
+
+            // For logging purpose
+            Debug.WriteLine($"Outlook build: {outlook.Version}");
+
+            //outlook.SendMail();
         }
     }
 
