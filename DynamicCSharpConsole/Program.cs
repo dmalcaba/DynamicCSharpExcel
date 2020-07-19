@@ -13,7 +13,8 @@ namespace DynamicCSharpConsole
         {
             //Run();
             //SendOutlookEmail();
-            CreateWord();
+            //CreateWord();
+            new ReflectionsReview().Start();
 
             Console.WriteLine("\n\nPress enter to continue...");
             Console.ReadLine();
